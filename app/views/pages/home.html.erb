@@ -1,2 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url('<%= image_path(".jpg") %>');">
+  <div class="container home">
+    <h1>PAPR</h1>
+    <h3>We immortalize your memories and share them with your beloved ones</h3>
+      <%= form_tag destinations_path, method: :get do %>
+      <% end %>
+  </div>
+</div>
+<br>
+<div class="container-fluid cards">
+  <h2 ><%= link_to "Albums", albums_path, class: "landing-page-titles" %></h2>
+  <br>
+  <div class="row">
+    <% @albums.first(3).each do |d| %>
+      <div class="col-lg-4 col-sm-6 mb-3">
+        <%= link_to album_path(d) do %>
+          <div class="card-trip">
+            <% unless d.pictures.blank?  %>
+           <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+           <% end %>
+            <div class="card-trip-infos">
+              <h2><%= d.name %></h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+<div class="footer">
+    <ul>
+      <li><a href="https://www.facebook.com/Papr-337582510470177/" target="_blank" > <i class="fab fa-facebook-square"></i> </a></li>
+      <li><a href="" target="_blank"> <i class="fab fa-instagram"></i> </a></li>
+    </ul>
+  <p>PAPR is a moroccan app coded with love</p>
+</div>
+
